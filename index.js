@@ -30,7 +30,7 @@ app.get('/waveformplayer/:id', (req, res) => {
 app.get('/relatedTracks/:id', (req, res) => {
   // res.send(req.params.id)
   const songId = req.params.id;
-  axios.get(`http://18.219.127.175/${songId}`)
+  axios.get(`http://18.219.127.175/relatedTracks/${songId}`)
     .then(({ data }) => {
       console.log('Related Tracks', data);
       res.json(data);
@@ -42,7 +42,7 @@ app.get('/relatedTracks/:id', (req, res) => {
 
 app.get('/relatedAlbums/:id', (req, res) => {
   const songId = req.params.id;
-  axios.get(`http://18.219.127.175/${songId}`)
+  axios.get(`http://18.219.127.175/relatedAlbums/${songId}`)
     .then(({ data }) => {
       console.log('Related Albums', data);
       res.json(data);
