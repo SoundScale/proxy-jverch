@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const path = require('path');
 const cors = require('cors')
 const axios = require('axios');
-var compression = require('compression')
+const compression = require('compression')
 const port = 3000;
 
 const app = express();
