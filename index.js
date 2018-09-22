@@ -17,6 +17,16 @@ app.get('/:id', (req, res) => {
   res.send('I HAVE REACHED THE PROXY  params->  ' + req.params.id);
 })
 
+app.get('/waveformplayer/:id', (req, res) => {
+  axios(`http://18.219.124.16/api/waveformplayer/${req.params.id}`)
+    .then(function (response) {
+      res.send(response.data)
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+});
+
 app.get('/relatedTracks/:id', (req, res) => {
   // res.send(req.params.id)
   const songId = req.params.id;
