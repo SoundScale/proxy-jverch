@@ -1,0 +1,28 @@
+#component {
+  background-color: #f2f2f2;
+  text-align: center
+}
+
+#app-wrapper {
+  background-color: white;
+  position: relative;
+  top: 39px;
+  display: inline-block;
+  width: 1274px;
+
+}
+
+#nav-bar {
+  position: fixed;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -8px;
+  margin-bottom: -1px;
+  height: 50px;
+  z-index: 1001;
+}
+
+.comment-app-wrapper {
+  text-align: left;
+}

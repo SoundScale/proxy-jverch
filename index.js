@@ -2,14 +2,18 @@
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
-const app = express();
-const port = 3000;
 const cors = require('cors')
 const axios = require('axios');
+var compression = require('compression')
+const port = 3000;
+
+const app = express();
+
+app.use(compression());
 
 app.use(cors());
 
-// app.use(morgan('dev'));
+app.use(morgan('dev'));
 
 app.use('/songs/:id', express.static('public'));
 
