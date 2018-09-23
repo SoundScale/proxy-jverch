@@ -57,7 +57,7 @@ app.get('/relatedAlbums/:id', (req, res) => {
 });
 
 app.get('/api/stats/:id', (req, res) => {
-  axios.get(`http://localhost:3004/api/stats/${req.params.id}`)
+  axios.get(`http://server-env-1.phjpybupp3.us-west-1.elasticbeanstalk.com/api/stats/${req.params.id}`)
     .then(({ data }) => {
       res.json(data);
     })
@@ -66,9 +66,9 @@ app.get('/api/stats/:id', (req, res) => {
     })
 })
 
-app.get('/comments/:songid', (req, res) => {
+app.get('/api/comments/:id', (req, res) => {
   // console.log(`http:/localhost:3001/api/${req.params.songid}`);
-  axios.get(`http://localhost:3001/api/${req.params.songid}`)
+  axios.get(`http://comments-server.2u82f9p8mx.us-east-2.elasticbeanstalk.com/api/comments/${req.params.id}`)
     .then(function (response) {
       res.send(response.data);
     })
