@@ -1,4 +1,4 @@
-
+require('newrelic');
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
@@ -22,14 +22,15 @@ app.get('/:id', (req, res) => {
 })
 
 app.get('/api/waveformplayer/:id', (req, res) => {
-  axios(`http://18.219.124.16/api/waveformplayer/${req.params.id}`)
+  // console.log("proxy server sent a GET request to /api/waveformplayer/:id");
+  axios(`${process.env.LB_HOST}/api/waveformplayer/${req.params.id}`)
     .then(function (response) {
       res.send(response.data)
     })
     .catch(function (error) {
       console.log(error);
     })
-});
+  });
 
 app.get('/relatedTracks/:id', (req, res) => {
   // res.send(req.params.id)
@@ -57,7 +58,7 @@ app.get('/relatedAlbums/:id', (req, res) => {
 });
 
 app.get('/api/stats/:id', (req, res) => {
-  axios.get(`http://server-env-1.phjpybupp3.us-west-1.elasticbeanstalk.com/api/stats/${req.params.id}`)
+  axios.get(`http://sdc-load-balancer-1743830225.us-west-1.elb.amazonaws.com/api/stats/${req.params.id}`)
     .then(({ data }) => {
       res.json(data);
     })
@@ -67,8 +68,7 @@ app.get('/api/stats/:id', (req, res) => {
 })
 
 app.get('/api/comments/:id', (req, res) => {
-  // console.log(`http:/localhost:3001/api/${req.params.songid}`);
-  axios.get(`http://comments-server.2u82f9p8mx.us-east-2.elasticbeanstalk.com/api/comments/${req.params.id}`)
+  axios.get(`http://SoundScale-Comments-LB-513047902.us-west-1.elb.amazonaws.com/api/comments/${req.params.id}`)
     .then(function (response) {
       res.send(response.data);
     })
